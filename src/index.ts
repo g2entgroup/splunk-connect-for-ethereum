@@ -91,7 +91,7 @@ class Ethlogger extends Command {
             // Run ethlogger until we receive ctrl+c or hit an unrecoverable error
             await Promise.race([this.startEthlogger(config), waitForSignal('SIGINT'), waitForSignal('SIGTERM')]);
 
-            info('Recieved signal, proceeding with shutdown sequence');
+            info('Received signal, proceeding with shutdown sequence');
             const cleanShutdown = await shutdownAll(this.resources, 10_000);
             info('Shutdown complete.');
             process.exit(cleanShutdown ? 0 : 2);
